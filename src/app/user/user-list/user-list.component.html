@@ -1,0 +1,8 @@
+<ul>
+  <li *ngFor="let user of users; let i = index">
+    <app-user-list-item 
+      [user]="user" 
+      [index]="i + 1">
+    </app-user-list-item>
+  </li>
+</ul>

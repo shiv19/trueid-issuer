@@ -1,0 +1,8 @@
+<div class="card" style="width: 18rem;">
+  <div class="card-body">
+    <h5 class="card-title">{{ index }}. {{ user.fullName }}</h5>
+    <p class="card-text">Address: {{ user.address }}</p>
+    <button type="button" (click)="onClickView()" class="btn btn-info">View</button>
+    <button type="button" class="btn btn-danger pull-right">Delete</button>
+  </div>
+</div>

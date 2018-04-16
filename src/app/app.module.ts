@@ -1,11 +1,12 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
-import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
-import { TooltipModule } from 'ngx-bootstrap/tooltip';
-import { ModalModule } from 'ngx-bootstrap/modal';
-
 import { AppComponent } from './app.component';
+import { CoreModule } from './core/core.module';
+import { AppRoutingModule } from './app.routing';
+import { UserModule } from './user/user.module';
+import { ProviderModule } from './provider/provider.module';
+import { RouterModule } from '@angular/router';
 
 
 @NgModule({
@@ -14,9 +15,11 @@ import { AppComponent } from './app.component';
   ],
   imports: [
     BrowserModule,
-    BsDropdownModule.forRoot(),
-    TooltipModule.forRoot(),
-    ModalModule.forRoot()
+    CoreModule,
+    AppRoutingModule,
+    RouterModule,
+    UserModule,
+    ProviderModule
   ],
   providers: [],
   bootstrap: [AppComponent]

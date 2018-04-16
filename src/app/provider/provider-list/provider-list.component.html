@@ -1,0 +1,6 @@
+<ul>
+  <li *ngFor="let provider of providers; let i = index">
+    <app-provider-list-item [provider]="provider" [index]="i + 1">
+    </app-provider-list-item>
+  </li>
+</ul>
