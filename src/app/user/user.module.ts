@@ -10,9 +10,15 @@ import { RouterModule } from '@angular/router';
 import { UserService } from '../services/user.service';
 import { ViewUserComponent } from './view-user/view-user.component';
 import { DateValueAccessorDirective } from '../directives/date-value-accessor.directive';
+import { ZXingScannerModule } from '@zxing/ngx-scanner';
 
 @NgModule({
-    imports: [CommonModule, RouterModule, FormsModule],
+    imports: [
+        CommonModule,
+        RouterModule,
+        FormsModule,
+        ZXingScannerModule.forRoot()
+    ],
     declarations: [
         AddUserComponent,
         UserListComponent,
@@ -22,6 +28,6 @@ import { DateValueAccessorDirective } from '../directives/date-value-accessor.di
         ViewUserComponent,
         DateValueAccessorDirective
     ],
-    providers: [ UserService ]
+    providers: [UserService]
 })
 export class UserModule {}

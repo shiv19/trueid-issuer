@@ -18,7 +18,8 @@ const routes: Routes = [
         { path: 'edit/:id', component: EditUserComponent }
     ] },
     { path: 'view-user/:id', component: ViewUserComponent },
-    {path: 'providers', component: ProviderComponent, children: [
+    { path: 'add-user', component: AddUserComponent },
+    { path: 'providers', component: ProviderComponent, children: [
         { path: '', component: ProviderListComponent, pathMatch: 'full' }
     ]},
     { path: '**', redirectTo: '', pathMatch: 'full' }

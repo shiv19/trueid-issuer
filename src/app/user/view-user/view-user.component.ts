@@ -17,12 +17,11 @@ export class ViewUserComponent implements OnInit {
     this.route.params.subscribe((params: Params) => {
       this.id = +params.id;
       this.user = this.userService.getUser(this.id);
-      console.log(this.user);
     });
   }
 
   onSave(value) {
-    
+    console.log(value);
   }
 
 }
