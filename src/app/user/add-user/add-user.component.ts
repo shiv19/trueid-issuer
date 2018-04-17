@@ -4,6 +4,9 @@ import { ZXingScannerComponent } from '@zxing/ngx-scanner';
 
 import { Result } from '@zxing/library';
 
+import trueID from '../../web3/trueID';
+import { Router } from '@angular/router';
+
 @Component({
     selector: 'app-add-user',
     templateUrl: './add-user.component.html',
@@ -19,9 +22,11 @@ export class AddUserComponent implements OnInit {
     availableDevices: MediaDeviceInfo[];
     selectedDevice: MediaDeviceInfo;
 
-    constructor() {}
+    addresses: any;
 
-    ngOnInit() {
+    constructor(private router: Router) {}
+
+    async ngOnInit() {
         this.scanner.camerasFound.subscribe((devices: MediaDeviceInfo[]) => {
             this.hasCameras = true;
 
@@ -41,6 +46,14 @@ export class AddUserComponent implements OnInit {
         this.scanner.permissionResponse.subscribe((answer: boolean) => {
             this.hasPermission = answer;
         });
+
+        this.addresses = localStorage.getItem('accounts');
+
+        if (!this.addresses) {
+            this.router.navigate(['/users']);
+        } else {
+            this.addresses = JSON.parse(this.addresses);
+        }
     }
 
     handleQrCodeResult(resultString: string) {
@@ -52,7 +65,28 @@ export class AddUserComponent implements OnInit {
         this.selectedDevice = this.scanner.getDeviceById(selectedValue);
     }
 
-    onSave(user) {
-        console.log(user);
+    async onSave(user) {
+
+        // const age = this.calculateAge(user.birthdate);
+        await trueID.methods.editUser(
+            user.address,
+            user.fullName,
+            user.fatherName,
+            user.motherName,
+            user.contactAddress,
+            user.gender,
+            user.birthdate,
+            user.country
+        ).send({
+            gas: 2000000,
+            from: this.addresses[0]
+        });
     }
+
+    // calculateAge(birthdateStr) {
+    //     const birthdate = new Date(birthdateStr);
+    //     const ageDifMs = Date.now() - birthdate.getTime();
+    //     const ageDate = new Date(ageDifMs); // miliseconds from epoch
+    //     return Math.abs(ageDate.getUTCFullYear() - 1970);
+    // }
 }

@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 @Injectable()
 export class UserService {
 
+  public currentUser: any;
   private users = [
     {
       fullName: 'Ashish Prajapati',
@@ -90,8 +91,8 @@ export class UserService {
     return this.users.slice();
   }
 
-  getUser(index) {
-    return Object.assign({}, this.users[index]);
+  getUser() {
+    return this.currentUser;
   }
 
 }

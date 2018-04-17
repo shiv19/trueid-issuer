@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Params } from '@angular/router';
+import { ActivatedRoute, Params, Router } from '@angular/router';
 import { UserService } from '../../services/user.service';
 
 @Component({
@@ -10,14 +10,13 @@ import { UserService } from '../../services/user.service';
 export class ViewUserComponent implements OnInit {
 
   user = {};
-  id;
-  constructor(private route: ActivatedRoute, private userService: UserService) { }
+  constructor(private route: ActivatedRoute, private userService: UserService, private router: Router) { }
 
   ngOnInit() {
-    this.route.params.subscribe((params: Params) => {
-      this.id = +params.id;
-      this.user = this.userService.getUser(this.id);
-    });
+    this.user = this.userService.getUser();
+    if (!this.user) {
+      this.router.navigate(['/users']);
+    }
   }
 
   onSave(value) {

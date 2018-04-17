@@ -1,5 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Router } from '@angular/router';
+import { UserService } from '../../../services/user.service';
 
 @Component({
   selector: 'app-user-list-item',
@@ -10,13 +11,15 @@ export class UserListItemComponent implements OnInit {
 
   @Input('user') user;
   @Input('index') index;
-  constructor(private router: Router) { }
+  constructor(private router: Router, private userService: UserService) { }
 
-  ngOnInit() {}
+  ngOnInit() {
+    console.log(this.user);
+  }
 
   onClickView() {
-    console.log('view user');
-    this.router.navigate(['/view-user/', this.index - 1]);
+    this.userService.currentUser = this.user;
+    this.router.navigate(['/view-user/']);
   }
 
 }

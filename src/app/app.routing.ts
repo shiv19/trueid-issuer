@@ -15,7 +15,7 @@ const routes: Routes = [
     { path: 'users', component: UserComponent, children: [
         { path: '', component: UserListComponent, pathMatch: 'full' }
     ] },
-    { path: 'view-user/:id', component: ViewUserComponent },
+    { path: 'view-user', component: ViewUserComponent },
     { path: 'add-user', component: AddUserComponent },
     { path: 'add-provider', component: AddProviderComponent },
     { path: 'providers', component: ProviderComponent, children: [
