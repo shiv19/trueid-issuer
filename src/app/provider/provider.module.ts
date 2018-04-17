@@ -5,14 +5,23 @@ import { ProviderListComponent } from './provider-list/provider-list.component';
 import { ProviderListItemComponent } from './provider-list/provider-list-item/provider-list-item.component';
 import { RouterModule } from '@angular/router';
 import { ProviderService } from '../services/provider.service';
+import { AddProviderComponent } from './add-provider/add-provider.component';
+import { ZXingScannerModule } from '@zxing/ngx-scanner';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
-    imports: [CommonModule, RouterModule],
+    imports: [
+        CommonModule,
+        RouterModule,
+        ZXingScannerModule.forRoot(),
+        FormsModule
+    ],
     declarations: [
         ProviderComponent,
         ProviderListComponent,
-        ProviderListItemComponent
+        ProviderListItemComponent,
+        AddProviderComponent
     ],
-    providers: [ ProviderService ]
+    providers: [ProviderService]
 })
 export class ProviderModule {}

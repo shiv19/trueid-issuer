@@ -15,7 +15,7 @@ export class UserService {
       fatherName: 'John Doe',
       motherName: 'Jane Doe',
       email: 'someone@something.com',
-      mobileNumber: '997766554433'
+      mobileNumber: '9977665544'
     },
     {
       fullName: 'Shiva Prasad',
@@ -28,7 +28,7 @@ export class UserService {
       fatherName: 'John Doe',
       motherName: 'Jane Doe',
       email: 'someone@something.com',
-      mobileNumber: '997766554433'
+      mobileNumber: '9977665544'
     },
     {
       fullName: 'Suvarna Mishra',
@@ -41,7 +41,7 @@ export class UserService {
       fatherName: 'John Doe',
       motherName: 'Jane Doe',
       email: 'someone@something.com',
-      mobileNumber: '997766554433'
+      mobileNumber: '9977665544'
     },
     {
       fullName: 'Shristi PA',
@@ -54,7 +54,7 @@ export class UserService {
       fatherName: 'John Doe',
       motherName: 'Jane Doe',
       email: 'someone@something.com',
-      mobileNumber: '997766554433'
+      mobileNumber: '9977665544'
     },
     {
       fullName: 'Shubham',
@@ -67,7 +67,7 @@ export class UserService {
       fatherName: 'John Doe',
       motherName: 'Jane Doe',
       email: 'someone@something.com',
-      mobileNumber: '997766554433'
+      mobileNumber: '9977665544'
     },
     {
       fullName: 'Shivanshu',
@@ -80,7 +80,7 @@ export class UserService {
       fatherName: 'John Doe',
       motherName: 'Jane Doe',
       email: 'someone@something.com',
-      mobileNumber: '997766554433'
+      mobileNumber: '9977665544'
     },
   ];
 

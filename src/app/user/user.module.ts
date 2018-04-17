@@ -5,7 +5,6 @@ import { AddUserComponent } from './add-user/add-user.component';
 import { UserListComponent } from './user-list/user-list.component';
 import { UserListItemComponent } from './user-list/user-list-item/user-list-item.component';
 import { UserComponent } from './user.component';
-import { EditUserComponent } from './edit-user/edit-user.component';
 import { RouterModule } from '@angular/router';
 import { UserService } from '../services/user.service';
 import { ViewUserComponent } from './view-user/view-user.component';
@@ -24,7 +23,6 @@ import { ZXingScannerModule } from '@zxing/ngx-scanner';
         UserListComponent,
         UserListItemComponent,
         UserComponent,
-        EditUserComponent,
         ViewUserComponent,
         DateValueAccessorDirective
     ],
