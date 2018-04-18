@@ -1,6 +1,5 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { Router } from '@angular/router';
-import { UserService } from '../../../services/user.service';
 
 @Component({
   selector: 'app-user-list-item',
@@ -11,15 +10,19 @@ export class UserListItemComponent implements OnInit {
 
   @Input('user') user;
   @Input('index') index;
-  constructor(private router: Router, private userService: UserService) { }
+  @Output() deleteUser = new EventEmitter<string>();
+  constructor(private router: Router) { }
 
-  ngOnInit() {
-    console.log(this.user);
-  }
+  ngOnInit() {}
 
   onClickView() {
-    this.userService.currentUser = this.user;
+    localStorage.setItem('currentUserIndex', (this.index - 1) + '' );
+    localStorage.setItem('currentUser', JSON.stringify(this.user));
     this.router.navigate(['/view-user/']);
+  }
+
+  onClickDelete() {
+    this.deleteUser.emit((this.index - 1) + '');
   }
 
 }

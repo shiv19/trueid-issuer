@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'app-provider-list-item',
@@ -9,9 +9,13 @@ export class ProviderListItemComponent implements OnInit {
 
   @Input('provider') provider;
   @Input('index') index;
+  @Output() deleteProvider = new EventEmitter<string>();
   constructor() { }
 
-  ngOnInit() {
+  ngOnInit() {}
+
+  onClickDelete() {
+    this.deleteProvider.emit((this.index - 1) + '');
   }
 
 }

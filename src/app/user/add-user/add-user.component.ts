@@ -68,19 +68,25 @@ export class AddUserComponent implements OnInit {
     async onSave(user) {
 
         // const age = this.calculateAge(user.birthdate);
-        await trueID.methods.editUser(
-            user.address,
-            user.fullName,
-            user.fatherName,
-            user.motherName,
-            user.contactAddress,
-            user.gender,
-            user.birthdate,
-            user.country
-        ).send({
-            gas: 2000000,
-            from: this.addresses[0]
-        });
+
+        const users = JSON.parse(localStorage.getItem('users'));
+        users.push(user);
+        localStorage.setItem('users', JSON.stringify(users));
+        this.router.navigate(['/users']);
+
+        // await trueID.methods.editUser(
+        //     user.address,
+        //     user.fullName,
+        //     user.fatherName,
+        //     user.motherName,
+        //     user.contactAddress,
+        //     user.gender,
+        //     user.birthdate,
+        //     user.country
+        // ).send({
+        //     gas: 2000000,
+        //     from: this.addresses[0]
+        // });
     }
 
     // calculateAge(birthdateStr) {

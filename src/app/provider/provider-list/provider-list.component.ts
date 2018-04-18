@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { ProviderService } from '../../services/provider.service';
 
 @Component({
   selector: 'app-provider-list',
@@ -9,10 +8,20 @@ import { ProviderService } from '../../services/provider.service';
 export class ProviderListComponent implements OnInit {
 
   providers;
-  constructor(private providerService: ProviderService) { }
+  constructor() { }
 
   ngOnInit() {
-    this.providers = this.providerService.getProviders();
+    this.providers = JSON.parse(localStorage.getItem('providers'));
+  }
+
+  onDeleteProvider(providerIndex) {
+    providerIndex = +providerIndex;
+    const index = this.providers.indexOf(this.providers[providerIndex]);
+
+    if (index !== -1) {
+      this.providers.splice(index, 1);
+    }
+    localStorage.setItem('providers', JSON.stringify(this.providers));
   }
 
 }

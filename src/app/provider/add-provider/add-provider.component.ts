@@ -67,13 +67,17 @@ export class AddProviderComponent implements OnInit {
 
     async onSave(provider) {
 
-        await trueID.methods.editProvider(
-            provider.address,
-            provider.name
-        ).send({
-            gas: 2000000,
-            from: this.addresses[0]
-        });
+        const providers = JSON.parse(localStorage.getItem('providers'));
+        providers.push(provider);
+        localStorage.setItem('providers', JSON.stringify(providers));
+        this.router.navigate(['/providers']);
+        // await trueID.methods.editProvider(
+        //     provider.address,
+        //     provider.name
+        // ).send({
+        //     gas: 2000000,
+        //     from: this.addresses[0]
+        // });
 
     }
 }

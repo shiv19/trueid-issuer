@@ -6,7 +6,6 @@ import { UserListComponent } from './user-list/user-list.component';
 import { UserListItemComponent } from './user-list/user-list-item/user-list-item.component';
 import { UserComponent } from './user.component';
 import { RouterModule } from '@angular/router';
-import { UserService } from '../services/user.service';
 import { ViewUserComponent } from './view-user/view-user.component';
 import { DateValueAccessorDirective } from '../directives/date-value-accessor.directive';
 import { ZXingScannerModule } from '@zxing/ngx-scanner';
@@ -25,7 +24,6 @@ import { ZXingScannerModule } from '@zxing/ngx-scanner';
         UserComponent,
         ViewUserComponent,
         DateValueAccessorDirective
-    ],
-    providers: [UserService]
+    ]
 })
 export class UserModule {}
