@@ -2,7 +2,8 @@
   <li *ngFor="let user of users; let i = index">
     <app-user-list-item 
       [user]="user" 
-      [index]="i + 1">
+      [index]="i + 1"
+      (deleteUser)="onDelete($event)">
     </app-user-list-item>
   </li>
 </ul>

@@ -81,6 +81,8 @@ export class AddUserComponent implements OnInit {
             gas: 2000000,
             from: this.addresses[0]
         });
+
+        this.router.navigate(['/users']);
     }
 
     // calculateAge(birthdateStr) {

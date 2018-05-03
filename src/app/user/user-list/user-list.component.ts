@@ -11,13 +11,23 @@ export class UserListComponent implements OnInit {
 
   users = [];
   userAddresses = [];
+  addresses: any;
 
   constructor(private userService: UserService) { }
 
   async ngOnInit() {
-    // this.users = this.userService.getUsers();
+    await this.getUsers();
+
+    this.addresses = localStorage.getItem('accounts');
+
+    if (this.addresses) {
+        this.addresses = JSON.parse(this.addresses);
+    }
+  }
+
+  async getUsers() {
     this.userAddresses = await trueID.methods.getUsers().call();
-    console.log(this.userAddresses);
+
     for (let i = 0; i < this.userAddresses.length; i++) {
       const user: any = {};
       const result = await trueID.methods.getUser(this.userAddresses[i]).call();
@@ -32,7 +42,15 @@ export class UserListComponent implements OnInit {
 
       this.users.push(user);
     }
-    console.log(this.users);
+  }
+
+  async onDelete(address) {
+    await trueID.methods.deleteUser(
+        address
+    ).send({
+        gas: 2000000,
+        from: this.addresses[0]
+    });
   }
 
 }

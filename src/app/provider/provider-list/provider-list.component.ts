@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ProviderService } from '../../services/provider.service';
+import trueID from '../../web3/trueID';
 
 @Component({
   selector: 'app-provider-list',
@@ -8,11 +8,25 @@ import { ProviderService } from '../../services/provider.service';
 })
 export class ProviderListComponent implements OnInit {
 
-  providers;
-  constructor(private providerService: ProviderService) { }
+  providers: any = [];
+  providerAddresses;
+  constructor() { }
 
-  ngOnInit() {
-    this.providers = this.providerService.getProviders();
+  async ngOnInit() {
+    this.getProviders();
+  }
+
+  async getProviders() {
+    this.providerAddresses = await trueID.methods.getProviders().call();
+
+    for (let i = 0; i < this.providerAddresses.length; i++) {
+      const provider: any = {};
+      const result = await trueID.methods.getProvider(this.providerAddresses[i]).call();
+      provider.address = this.providerAddresses[i];
+      provider.name = result;
+
+      this.providers.push(provider);
+    }
   }
 
 }
