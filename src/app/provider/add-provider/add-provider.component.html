@@ -58,6 +58,29 @@
         </div>
       </div>
     </div>
+
+    <div class="row">
+      <div class="col-md-12 mb-3">
+        <label for="email">Email</label>
+        <input [(ngModel)]="provider.email" type="email" class="form-control" name="email" placeholder="" value="" required>
+
+        <div class="invalid-feedback">
+          Valid email is required
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-12 mb-3">
+        <label for="contactAddress">Address</label>
+        <input [(ngModel)]="provider.contactAddress" type="text" class="form-control" name="contactAddress" placeholder="" value="" required>
+
+        <div class="invalid-feedback">
+          Valid address is required
+        </div>
+      </div>
+    </div>
+
     <div class="text-center">
       <button class="btn btn-primary" type="submit">Save Details</button>
     </div>

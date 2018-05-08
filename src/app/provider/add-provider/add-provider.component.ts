@@ -69,7 +69,9 @@ export class AddProviderComponent implements OnInit {
 
         await trueID.methods.editProvider(
             provider.address,
-            provider.name
+            provider.name,
+            provider.contactAddress,
+            provider.email
         ).send({
             gas: 2000000,
             from: this.addresses[0]

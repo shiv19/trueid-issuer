@@ -23,7 +23,9 @@ export class ProviderListComponent implements OnInit {
       const provider: any = {};
       const result = await trueID.methods.getProvider(this.providerAddresses[i]).call();
       provider.address = this.providerAddresses[i];
-      provider.name = result;
+      provider.name = result[0];
+      provider.contactAddress = result[1];
+      provider.email = result[2];
 
       this.providers.push(provider);
     }
