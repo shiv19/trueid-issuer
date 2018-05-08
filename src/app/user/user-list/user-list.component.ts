@@ -16,21 +16,22 @@ export class UserListComponent implements OnInit {
   constructor(private userService: UserService) { }
 
   async ngOnInit() {
-    await this.getUsers();
-
     this.addresses = localStorage.getItem('accounts');
 
     if (this.addresses) {
         this.addresses = JSON.parse(this.addresses);
     }
+
+    await this.getUsers();
   }
 
   async getUsers() {
-    this.userAddresses = await trueID.methods.getUsers().call();
+    this.userAddresses = await trueID.methods.getUsers().call({"from": this.addresses[0]});
 
     for (let i = 0; i < this.userAddresses.length; i++) {
       const user: any = {};
-      const result = await trueID.methods.getUser(this.userAddresses[i]).call();
+      const result = await trueID.methods.getUser(this.userAddresses[i]).call({"from": this.addresses[0]});
+      
       user.address = this.userAddresses[i];
       user.fullName = result[0];
       user.fatherName = result[1];

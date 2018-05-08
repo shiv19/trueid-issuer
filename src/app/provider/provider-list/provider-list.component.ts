@@ -10,14 +10,21 @@ export class ProviderListComponent implements OnInit {
 
   providers: any = [];
   providerAddresses;
+  addresses: any;
   constructor() { }
 
   async ngOnInit() {
+    this.addresses = localStorage.getItem('accounts');
+
+    if (this.addresses) {
+        this.addresses = JSON.parse(this.addresses);
+    }
+
     this.getProviders();
   }
 
   async getProviders() {
-    this.providerAddresses = await trueID.methods.getProviders().call();
+    this.providerAddresses = await trueID.methods.getProviders().call({"from": this.addresses[0]});
 
     for (let i = 0; i < this.providerAddresses.length; i++) {
       const provider: any = {};
